@@ -14,7 +14,7 @@ class CSP(object):
 
         A `variable` is a pairing (variable name, list of valid
         assignments), e.g.: ('boolvar1', [0,1]).
-        A `constraint` is a paring (relevant variables, constraint
+        A `constraint` is a pairing (relevant variables, constraint
         function), e.g. (('x1','x2'),lambda x1,x2:x1!=x2).
 
         """
@@ -56,6 +56,7 @@ class CSP(object):
             for i in xrange(0,len(args),2):
                 var,domain = args[i],args[i+1]
                 self.add_variable(var,domain)
+
     def add_variable(self,varname,domain):
         """Add a new variable to the constraint graph."""
         if varname in self.variables:
@@ -64,6 +65,7 @@ class CSP(object):
             self.variables.append(varname)
             self.domains[varname] = domain
             self.arcs[varname] = {}
+
     def add_constraint(self,varnames,func):
         """
         Impose a constraint.
